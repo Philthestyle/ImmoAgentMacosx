@@ -3,6 +3,7 @@ import SwiftUI
 struct PropertiesView: View {
     let dataService: DataServiceProtocol
     @StateObject private var viewModel: PropertiesViewModel
+    @Environment(AppCoordinator.self) private var coordinator
 
     init(dataService: DataServiceProtocol) {
         self.dataService = dataService
@@ -111,10 +112,6 @@ struct PropertiesView: View {
             }
         }
         .background(Color(.windowBackgroundColor))
-        .sheet(item: $viewModel.selectedProperty) { property in
-            PropertyDetailView(property: property)
-                .frame(minWidth: 600, minHeight: 500)
-        }
     }
 
     // MARK: - Cards View
@@ -125,7 +122,7 @@ struct PropertiesView: View {
                 ForEach(viewModel.filteredProperties) { property in
                     PropertyCardView(property: property)
                         .onTapGesture {
-                            viewModel.selectedProperty = property
+                            coordinator.showPropertyDetail(property.id)
                         }
                         .contentShape(Rectangle())
                 }
@@ -170,7 +167,7 @@ struct PropertiesView: View {
                 ForEach(viewModel.filteredProperties) { property in
                     propertyRow(property)
                         .onTapGesture {
-                            viewModel.selectedProperty = property
+                            coordinator.showPropertyDetail(property.id)
                         }
                         .contentShape(Rectangle())
                 }

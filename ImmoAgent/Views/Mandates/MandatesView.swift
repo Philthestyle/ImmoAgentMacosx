@@ -2,7 +2,7 @@ import SwiftUI
 
 struct MandatesView: View {
     @StateObject private var viewModel: MandatesViewModel
-    @State private var selectedMandate: Mandate?
+    @Environment(AppCoordinator.self) private var coordinator
 
     init(dataService: DataServiceProtocol) {
         _viewModel = StateObject(wrappedValue: MandatesViewModel(dataService: dataService))
@@ -19,10 +19,6 @@ struct MandatesView: View {
             .padding(28)
         }
         .background(Color(.windowBackgroundColor))
-        .sheet(item: $selectedMandate) { mandate in
-            mandateDetail(mandate)
-                .frame(minWidth: 550, minHeight: 500)
-        }
     }
 
     // MARK: - Header
@@ -128,7 +124,7 @@ struct MandatesView: View {
                 ForEach(viewModel.filteredMandates) { mandate in
                     mandateCard(mandate)
                         .onTapGesture {
-                            selectedMandate = mandate
+                            coordinator.showMandateDetail(mandate.id)
                         }
                 }
             }
@@ -224,116 +220,6 @@ struct MandatesView: View {
         .contentShape(Rectangle())
     }
 
-    // MARK: - Mandate Detail Sheet
-
-    private func mandateDetail(_ mandate: Mandate) -> some View {
-        VStack(spacing: 0) {
-            HStack {
-                Text("D\u{00E9}tail du mandat")
-                    .font(.headline)
-                Spacer()
-                Button {
-                    selectedMandate = nil
-                } label: {
-                    Image(systemName: "xmark.circle.fill")
-                        .font(.title2)
-                        .foregroundStyle(.secondary)
-                }
-                .buttonStyle(.plain)
-            }
-            .padding(20)
-            Divider()
-
-            ScrollView {
-                VStack(alignment: .leading, spacing: 20) {
-                    VStack(alignment: .leading, spacing: 6) {
-                        Text(mandate.propertyTitle)
-                            .font(.title2)
-                            .fontWeight(.bold)
-                        Text(mandate.ownerName)
-                            .font(.subheadline)
-                            .foregroundStyle(.secondary)
-
-                        HStack(spacing: 8) {
-                            BadgeView(text: mandate.type.label, variant: .info)
-                            BadgeView.forMandateStatus(mandate.status)
-                        }
-                        .padding(.top, 4)
-
-                        HStack {
-                            Text("Prix demand\u{00E9}: \(CurrencyFormatter.format(mandate.askingPrice))")
-                                .font(.subheadline)
-                            Text("\u{2022}")
-                                .foregroundStyle(.secondary)
-                            Text("Commission: \(String(format: "%.1f", mandate.commissionPercent))%")
-                                .font(.subheadline)
-                        }
-                        .padding(.top, 4)
-                    }
-
-                    Divider()
-
-                    let grouped = Dictionary(grouping: mandate.documents, by: \.category)
-                    let categories = grouped.keys.sorted()
-
-                    ForEach(categories, id: \.self) { category in
-                        VStack(alignment: .leading, spacing: 8) {
-                            Text(category.uppercased())
-                                .font(.caption)
-                                .fontWeight(.bold)
-                                .foregroundStyle(.secondary)
-                                .tracking(0.8)
-
-                            ForEach(grouped[category] ?? []) { doc in
-                                HStack(spacing: 10) {
-                                    Image(systemName: doc.provided ? "checkmark.circle.fill" : "circle")
-                                        .foregroundStyle(doc.provided ? .green : .secondary)
-
-                                    VStack(alignment: .leading, spacing: 2) {
-                                        HStack(spacing: 4) {
-                                            Text(doc.name)
-                                                .font(.subheadline)
-                                                .fontWeight(.medium)
-                                            if doc.required {
-                                                Text("*")
-                                                    .font(.caption)
-                                                    .foregroundStyle(.red)
-                                            }
-                                        }
-                                        Text(doc.description)
-                                            .font(.caption)
-                                            .foregroundStyle(.secondary)
-                                            .lineLimit(2)
-
-                                        if let fileName = doc.fileName {
-                                            Text(fileName)
-                                                .font(.caption)
-                                                .foregroundStyle(.blue)
-                                        }
-                                    }
-
-                                    Spacer()
-
-                                    if !doc.provided {
-                                        Button("Ajouter") {
-                                            // upload action
-                                        }
-                                        .buttonStyle(.bordered)
-                                        .controlSize(.small)
-                                    }
-                                }
-                                .padding(.vertical, 4)
-                            }
-                        }
-                        .padding(.bottom, 8)
-                    }
-                }
-                .padding(24)
-            }
-        }
-        .background(Color(.windowBackgroundColor))
-    }
-
     // MARK: - Helpers
 
     private func progressColor(_ progress: Double) -> Color {
@@ -346,5 +232,6 @@ struct MandatesView: View {
 
 #Preview {
     MandatesView(dataService: DataService())
+        .environment(AppCoordinator())
         .frame(width: 900, height: 700)
 }

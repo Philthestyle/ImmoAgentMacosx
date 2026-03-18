@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(wc -l /Users/pro/Desktop/ImmoAgentMacosx/.claude/worktrees/youthful-booth/ImmoAgent/Models/*.swift)",
+      "Bash(xcodegen generate:*)",
+      "Bash(xcodebuild -project ImmoAgent.xcodeproj -scheme ImmoAgent -configuration Debug build)",
+      "Bash(git -C /Users/pro/Desktop/ImmoAgentMacosx/.claude/worktrees/youthful-booth status)",
+      "Bash(git -C /Users/pro/Desktop/ImmoAgentMacosx/.claude/worktrees/youthful-booth diff)",
+      "Bash(git -C /Users/pro/Desktop/ImmoAgentMacosx/.claude/worktrees/youthful-booth log --oneline -5)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)"
+    ]
+  }
+}

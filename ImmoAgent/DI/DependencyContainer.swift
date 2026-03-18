@@ -13,6 +13,7 @@ protocol DataServiceProtocol: AnyObject {
     func addProperty(_ property: Property)
     func addClient(_ client: Client)
     func addMandate(_ mandate: Mandate)
+    func updateMandate(_ mandate: Mandate)
     func addVisit(_ visit: Visit)
 }
 

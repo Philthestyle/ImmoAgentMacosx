@@ -14,6 +14,7 @@
 		2F2BDBEF9AD3518D004C3158 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DC9D7C7176B5CA70A260A35 /* DataService.swift */; };
 		2FDDF149F519D79795DFD0FE /* AgendaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC8DEAF2AF55D4C2353E36C /* AgendaView.swift */; };
 		3BAC8A2439B7F2D6356C4097 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A65B80B50900EB1227006B8 /* Client.swift */; };
+		477B4EC3FBF4CFA9836CD8E0 /* MandateDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CAA12E2BFFFD48D42A3113A /* MandateDetailView.swift */; };
 		4D6105483FD0FD3B0B90B776 /* PropertyCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319D5FE1CC379C27BBB505DD /* PropertyCardView.swift */; };
 		500EB7C7F0CEC38B65D0F053 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA988F8783CE1188186F4D76 /* Assets.xcassets */; };
 		60E56B637944D1B9EB41DBAF /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DE0179A795B6C1D920D710 /* AppCoordinator.swift */; };
@@ -32,6 +33,7 @@
 		CCF64F305193149D39BC55FE /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA61B9B8837D8E8512C870A /* UserProfile.swift */; };
 		D16C941D965E944C7DC9FF38 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349F9B0791014F6A0CFE53EA /* ContentView.swift */; };
 		DE6D581848CC533BE002F2A0 /* KPICardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A168D272A6119DDC9ABE72AF /* KPICardView.swift */; };
+		E54023D376771895049DE3C5 /* ClientDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB983143673726D4014C8EEA /* ClientDetailView.swift */; };
 		E8BE8BF1271C45C3331F0675 /* ClientsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F09953B15C7867EC7961BF1 /* ClientsViewModel.swift */; };
 		F17226466D36433D3198084E /* MandatesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626AE9B07152B5EDF681F10A /* MandatesView.swift */; };
 		F79E0FD24F43E0B7C3D846F1 /* DependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E524FD60753FD8D7F15DB5D /* DependencyContainer.swift */; };
@@ -53,6 +55,7 @@
 		64DE0179A795B6C1D920D710 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		6B58E20D084B71D9988CD1D6 /* PropertyDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyDetailView.swift; sourceTree = "<group>"; };
 		77353FF33721CED905252F3F /* PropertiesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertiesView.swift; sourceTree = "<group>"; };
+		7CAA12E2BFFFD48D42A3113A /* MandateDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MandateDetailView.swift; sourceTree = "<group>"; };
 		7DA4F7916993A708E9A674E1 /* ImmoAgent.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImmoAgent.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7DC9D7C7176B5CA70A260A35 /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		8C3000AD71B60D8BA4818910 /* DashboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewModel.swift; sourceTree = "<group>"; };
@@ -61,6 +64,7 @@
 		A168D272A6119DDC9ABE72AF /* KPICardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KPICardView.swift; sourceTree = "<group>"; };
 		A1B49BA8FA6CCA9C7486E754 /* BadgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeView.swift; sourceTree = "<group>"; };
 		A8D37B2E4389F9E084C8994E /* EmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateView.swift; sourceTree = "<group>"; };
+		AB983143673726D4014C8EEA /* ClientDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientDetailView.swift; sourceTree = "<group>"; };
 		CA988F8783CE1188186F4D76 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CEC8DEAF2AF55D4C2353E36C /* AgendaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgendaView.swift; sourceTree = "<group>"; };
 		D02E241BF076C63AC456CCA8 /* Property.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Property.swift; sourceTree = "<group>"; };
@@ -166,6 +170,7 @@
 		95D89AE776C786BFC67666A8 /* Mandates */ = {
 			isa = PBXGroup;
 			children = (
+				7CAA12E2BFFFD48D42A3113A /* MandateDetailView.swift */,
 				626AE9B07152B5EDF681F10A /* MandatesView.swift */,
 			);
 			path = Mandates;
@@ -218,6 +223,7 @@
 		D64618BC48935F5656D9C326 /* Clients */ = {
 			isa = PBXGroup;
 			children = (
+				AB983143673726D4014C8EEA /* ClientDetailView.swift */,
 				F9B9273FE88B88FBA9D8BBDF /* ClientsView.swift */,
 			);
 			path = Clients;
@@ -324,6 +330,7 @@
 				60E56B637944D1B9EB41DBAF /* AppCoordinator.swift in Sources */,
 				9146391F9104BD8BD0693622 /* BadgeView.swift in Sources */,
 				3BAC8A2439B7F2D6356C4097 /* Client.swift in Sources */,
+				E54023D376771895049DE3C5 /* ClientDetailView.swift in Sources */,
 				85FB444B02351DD0CBB49BB7 /* ClientsView.swift in Sources */,
 				E8BE8BF1271C45C3331F0675 /* ClientsViewModel.swift in Sources */,
 				D16C941D965E944C7DC9FF38 /* ContentView.swift in Sources */,
@@ -335,6 +342,7 @@
 				BF0E8350B233DBCD59B8250D /* ImmoAgentApp.swift in Sources */,
 				DE6D581848CC533BE002F2A0 /* KPICardView.swift in Sources */,
 				65B8449CDAC54CD59472E7BB /* Mandate.swift in Sources */,
+				477B4EC3FBF4CFA9836CD8E0 /* MandateDetailView.swift in Sources */,
 				F17226466D36433D3198084E /* MandatesView.swift in Sources */,
 				ADD80C3364105428563053CD /* MandatesViewModel.swift in Sources */,
 				113289227AFCC308EF5AB414 /* PhoneCall.swift in Sources */,

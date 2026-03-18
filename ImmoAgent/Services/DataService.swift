@@ -76,6 +76,15 @@ final class DataService: DataServiceProtocol, ObservableObject {
         if !isDemo { realMandates.append(mandate) }
     }
 
+    func updateMandate(_ mandate: Mandate) {
+        if let index = mandates.firstIndex(where: { $0.id == mandate.id }) {
+            mandates[index] = mandate
+        }
+        if !isDemo, let index = realMandates.firstIndex(where: { $0.id == mandate.id }) {
+            realMandates[index] = mandate
+        }
+    }
+
     func addVisit(_ visit: Visit) {
         visits.append(visit)
         if !isDemo { realVisits.append(visit) }

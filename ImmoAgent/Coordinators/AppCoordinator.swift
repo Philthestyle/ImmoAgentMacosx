@@ -24,7 +24,30 @@ enum AppDestination: String, CaseIterable, Identifiable {
     }
 }
 
+enum DetailItem: Equatable, Hashable {
+    case mandate(String)   // mandate id
+    case property(String)  // property id
+    case client(String)    // client id
+}
+
 @Observable
 final class AppCoordinator {
     var selectedDestination: AppDestination = .dashboard
+    var detailItem: DetailItem?
+
+    func showMandateDetail(_ mandateId: String) {
+        detailItem = .mandate(mandateId)
+    }
+
+    func showPropertyDetail(_ propertyId: String) {
+        detailItem = .property(propertyId)
+    }
+
+    func showClientDetail(_ clientId: String) {
+        detailItem = .client(clientId)
+    }
+
+    func dismissDetail() {
+        detailItem = nil
+    }
 }

@@ -3,14 +3,23 @@ import SwiftUI
 struct PropertyDetailView: View {
     let property: Property
     @State private var isEditing = false
-    @Environment(\.dismiss) private var dismiss
+    @Environment(AppCoordinator.self) private var coordinator
 
     var body: some View {
         VStack(spacing: 0) {
             // Top bar
-            HStack {
-                Text(isEditing ? "Modifier le bien" : "D\u{00E9}tail du bien")
-                    .font(.headline)
+            HStack(spacing: 12) {
+                Button {
+                    coordinator.dismissDetail()
+                } label: {
+                    HStack(spacing: 6) {
+                        Image(systemName: "chevron.left")
+                        Text("Biens")
+                    }
+                    .font(.subheadline)
+                }
+                .buttonStyle(.plain)
+                .foregroundStyle(.blue)
 
                 Spacer()
 
@@ -20,17 +29,9 @@ struct PropertyDetailView: View {
                     Label(isEditing ? "Annuler" : "Modifier", systemImage: isEditing ? "xmark" : "pencil")
                 }
                 .buttonStyle(.bordered)
-
-                Button {
-                    dismiss()
-                } label: {
-                    Image(systemName: "xmark.circle.fill")
-                        .font(.title2)
-                        .foregroundStyle(.secondary)
-                }
-                .buttonStyle(.plain)
             }
-            .padding(20)
+            .padding(.horizontal, 28)
+            .padding(.vertical, 16)
 
             Divider()
 
