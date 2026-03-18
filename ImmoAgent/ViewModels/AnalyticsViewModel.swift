@@ -96,6 +96,31 @@ final class AnalyticsViewModel: ObservableObject {
         CurrencyFormatter.format(value)
     }
 
+    // Sold properties detail
+    struct SaleDetail: Identifiable {
+        let id: String
+        let title: String
+        let salePrice: Double
+        let commission: Double
+        let netCommission: Double
+    }
+
+    var salesDetails: [SaleDetail] {
+        properties.filter { $0.status == .sold }.map { prop in
+            let comm = prop.saleCommissionAmount ?? 0
+            let social = comm * 0.2065
+            let tax = (comm - social) * 0.45
+            let net = comm - social - tax
+            return SaleDetail(
+                id: prop.id,
+                title: prop.title,
+                salePrice: prop.salePrice ?? prop.price,
+                commission: comm,
+                netCommission: net
+            )
+        }
+    }
+
     // Net income calculator
     var grossCommission: Double { commission }
     var socialCharges: Double { grossCommission * 0.2065 }
