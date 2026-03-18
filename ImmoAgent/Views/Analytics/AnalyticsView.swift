@@ -2,8 +2,11 @@ import SwiftUI
 
 struct AnalyticsView: View {
     @StateObject private var viewModel: AnalyticsViewModel
+    @Environment(AppCoordinator.self) private var coordinator
+    let dataService: DataServiceProtocol
 
     init(dataService: DataServiceProtocol) {
+        self.dataService = dataService
         _viewModel = StateObject(wrappedValue: AnalyticsViewModel(dataService: dataService))
     }
 
@@ -83,11 +86,68 @@ struct AnalyticsView: View {
 
     private var secondaryKPIs: some View {
         HStack(spacing: 16) {
-            secondaryKPI(icon: "building.2.fill", value: "\(viewModel.stats.biensActifs)", label: "Biens actifs")
-            secondaryKPI(icon: "eye.fill", value: "\(viewModel.stats.visitsCount)", label: "Visites")
-            secondaryKPI(icon: "doc.text.fill", value: "\(viewModel.stats.mandatsSignes)", label: "Mandats sign\u{00E9}s")
+            clickableKPI(
+                icon: "building.2.fill",
+                value: "\(viewModel.stats.biensActifs)",
+                label: "Biens actifs"
+            ) {
+                coordinator.selectedDestination = .properties
+            }
+
+            clickableKPI(
+                icon: "eye.fill",
+                value: "\(viewModel.stats.visitsCount)",
+                label: "Visites"
+            ) {
+                coordinator.selectedDestination = .agenda
+            }
+
+            clickableKPI(
+                icon: "doc.text.fill",
+                value: "\(viewModel.stats.mandatsSignes)",
+                label: "Mandats sign\u{00E9}s"
+            ) {
+                coordinator.selectedDestination = .mandates
+            }
+
             secondaryKPI(icon: "percent", value: String(format: "%.1f%%", viewModel.stats.tauxConversion), label: "Taux de conversion")
         }
+    }
+
+    private func clickableKPI(icon: String, value: String, label: String, action: @escaping () -> Void) -> some View {
+        Button(action: action) {
+            HStack(spacing: 12) {
+                Image(systemName: icon)
+                    .font(.title3)
+                    .foregroundStyle(.blue)
+                    .frame(width: 32)
+
+                VStack(alignment: .leading, spacing: 2) {
+                    Text(value)
+                        .font(.title2)
+                        .fontWeight(.bold)
+                        .foregroundStyle(.primary)
+                    HStack(spacing: 4) {
+                        Text(label)
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
+                        Image(systemName: "chevron.right")
+                            .font(.caption2)
+                            .foregroundStyle(.blue)
+                    }
+                }
+            }
+            .padding(16)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .background(Color(.controlBackgroundColor))
+            .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+            .shadow(color: .black.opacity(0.04), radius: 3, y: 1)
+            .overlay(
+                RoundedRectangle(cornerRadius: 12, style: .continuous)
+                    .strokeBorder(Color.blue.opacity(0.15), lineWidth: 1)
+            )
+        }
+        .buttonStyle(.plain)
     }
 
     private func secondaryKPI(icon: String, value: String, label: String) -> some View {
@@ -346,5 +406,6 @@ struct AnalyticsView: View {
 
 #Preview {
     AnalyticsView(dataService: DataService())
+        .environment(AppCoordinator())
         .frame(width: 1000, height: 900)
 }
