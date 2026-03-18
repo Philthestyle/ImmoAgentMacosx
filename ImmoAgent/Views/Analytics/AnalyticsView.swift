@@ -55,25 +55,24 @@ struct AnalyticsView: View {
     // MARK: - Hero KPIs
 
     private var heroKPIs: some View {
-        HStack(spacing: 16) {
+        let count = viewModel.stats.ventesCount
+        return HStack(spacing: 16) {
             KPICardView(
                 icon: "house.fill",
-                value: "\(viewModel.stats.ventesCount)",
-                label: "Ventes",
-                changePercent: 12.5,
+                value: "\(count)",
+                label: count <= 1 ? "Vente" : "Ventes",
                 isHero: true
             )
             KPICardView(
                 icon: "eurosign.circle.fill",
                 value: viewModel.stats.formattedCA,
-                label: "Chiffre d'affaires",
-                subtitle: "Volume total des transactions"
+                label: "CA factur\u{00E9}",
+                subtitle: "Commission 0,25% par vente"
             )
             KPICardView(
                 icon: "chart.line.uptrend.xyaxis",
                 value: viewModel.stats.formattedPrixMoyen,
-                label: "Prix moyen",
-                changePercent: -3.2
+                label: "Prix de vente moyen"
             )
             KPICardView(
                 icon: "banknote.fill",
