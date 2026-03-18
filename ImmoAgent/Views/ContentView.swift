@@ -151,7 +151,7 @@ struct ContentView: View {
                 }
             case .client(let id):
                 if let client = dataService.clients.first(where: { $0.id == id }) {
-                    ClientDetailView(client: client)
+                    ClientDetailView(client: client, dataService: dataService)
                 }
             }
         } else {

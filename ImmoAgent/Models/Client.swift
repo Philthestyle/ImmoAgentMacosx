@@ -39,6 +39,8 @@ struct Client: Identifiable, Codable, Hashable {
     var createdAt: String
     var lastContact: String
     var notes: String
+    var propertyIds: [String]
+    var interests: [String]
     var fullName: String { "\(firstName) \(lastName)" }
     var initials: String { "\(firstName.prefix(1))\(lastName.prefix(1))" }
 }
