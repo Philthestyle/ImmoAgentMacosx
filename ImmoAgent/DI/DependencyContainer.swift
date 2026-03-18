@@ -14,6 +14,8 @@ protocol DataServiceProtocol: AnyObject {
     func addClient(_ client: Client)
     func addMandate(_ mandate: Mandate)
     func updateMandate(_ mandate: Mandate)
+    func updateClient(_ client: Client)
+    func updateProperty(_ property: Property)
     func addVisit(_ visit: Visit)
 }
 

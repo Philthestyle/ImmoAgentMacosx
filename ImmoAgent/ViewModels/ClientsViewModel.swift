@@ -35,7 +35,8 @@ final class ClientsViewModel: ObservableObject {
             email: "", phone: "", budget: 0,
             status: .new, source: .website,
             searchCriteria: "", createdAt: ISO8601DateFormatter().string(from: Date()),
-            lastContact: ISO8601DateFormatter().string(from: Date()), notes: ""
+            lastContact: ISO8601DateFormatter().string(from: Date()), notes: "",
+            propertyIds: [], interests: []
         )
         dataService.addClient(newClient)
         selectedClient = newClient

@@ -85,6 +85,24 @@ final class DataService: DataServiceProtocol, ObservableObject {
         }
     }
 
+    func updateClient(_ client: Client) {
+        if let index = clients.firstIndex(where: { $0.id == client.id }) {
+            clients[index] = client
+        }
+        if !isDemo, let index = realClients.firstIndex(where: { $0.id == client.id }) {
+            realClients[index] = client
+        }
+    }
+
+    func updateProperty(_ property: Property) {
+        if let index = properties.firstIndex(where: { $0.id == property.id }) {
+            properties[index] = property
+        }
+        if !isDemo, let index = realProperties.firstIndex(where: { $0.id == property.id }) {
+            realProperties[index] = property
+        }
+    }
+
     func addVisit(_ visit: Visit) {
         visits.append(visit)
         if !isDemo { realVisits.append(visit) }
@@ -422,7 +440,9 @@ final class DataService: DataServiceProtocol, ObservableObject {
             searchCriteria: "T3/T4 Bruxelles centre, balcon, proche m\u{00E9}tro",
             createdAt: "2026-02-20",
             lastContact: "2026-03-15",
-            notes: "Tr\u{00E8}s motiv\u{00E9}e, recherche active depuis 3 mois."
+            notes: "Tr\u{00E8}s motiv\u{00E9}e, recherche active depuis 3 mois.",
+            propertyIds: ["1", "3"],
+            interests: ["Quartiers vivants", "Proximit\u{00E9} transports", "Balcon ou terrasse", "Cuisine ouverte"]
         ),
         Client(
             id: "2",
@@ -436,7 +456,9 @@ final class DataService: DataServiceProtocol, ObservableObject {
             searchCriteria: "Maison 5 pi\u{00E8}ces, jardin, Brabant wallon",
             createdAt: "2026-01-15",
             lastContact: "2026-03-16",
-            notes: "En n\u{00E9}gociation sur la maison de Uccle. Offre \u{00E0} 495K\u{20AC}."
+            notes: "En n\u{00E9}gociation sur la maison de Uccle. Offre \u{00E0} 495K\u{20AC}.",
+            propertyIds: ["2"],
+            interests: ["Jardin pour les enfants", "Garage double", "\u{00C9}coles proches", "Calme et verdure"]
         ),
         Client(
             id: "3",
@@ -450,7 +472,9 @@ final class DataService: DataServiceProtocol, ObservableObject {
             searchCriteria: "Studio ou T2, investissement locatif",
             createdAt: "2026-03-14",
             lastContact: "2026-03-14",
-            notes: "Premier achat investissement, demande informations fiscales."
+            notes: "Premier achat investissement, demande informations fiscales.",
+            propertyIds: ["3"],
+            interests: ["Rendement locatif", "Faibles charges", "Fiscalit\u{00E9} belge", "Quartier \u{00E9}tudiant"]
         ),
         Client(
             id: "4",
@@ -464,7 +488,9 @@ final class DataService: DataServiceProtocol, ObservableObject {
             searchCriteria: "Villa avec piscine, vue d\u{00E9}gag\u{00E9}e",
             createdAt: "2026-02-05",
             lastContact: "2026-03-12",
-            notes: "Int\u{00E9}ress\u{00E9} par la villa de Waterloo. Visite pr\u{00E9}vue samedi."
+            notes: "Int\u{00E9}ress\u{00E9} par la villa de Waterloo. Visite pr\u{00E9}vue samedi.",
+            propertyIds: ["4"],
+            interests: ["Piscine", "Architecture contemporaine", "Vue panoramique", "Home cinema"]
         ),
         Client(
             id: "5",
@@ -478,7 +504,9 @@ final class DataService: DataServiceProtocol, ObservableObject {
             searchCriteria: "Loft ou T3 atypique, Saint-Gilles ou Sablon",
             createdAt: "2026-03-08",
             lastContact: "2026-03-11",
-            notes: "Architecte, cherche bien avec caract\u{00E8}re."
+            notes: "Architecte, cherche bien avec caract\u{00E8}re.",
+            propertyIds: ["6", "1"],
+            interests: ["Volumes atypiques", "Mat\u{00E9}riaux bruts", "Lumi\u{00E8}re naturelle", "Terrasse rooftop"]
         ),
         Client(
             id: "6",
@@ -492,7 +520,9 @@ final class DataService: DataServiceProtocol, ObservableObject {
             searchCriteria: "T4 familial Etterbeek",
             createdAt: "2025-11-20",
             lastContact: "2026-03-01",
-            notes: "Vente conclue le 01/03. Tr\u{00E8}s satisfait."
+            notes: "Vente conclue le 01/03. Tr\u{00E8}s satisfait.",
+            propertyIds: ["5"],
+            interests: ["Parc du Cinquantenaire", "Famille", "\u{00C9}coles francophones", "Calme"]
         ),
     ]
 
