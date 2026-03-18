@@ -34,20 +34,25 @@ enum DetailItem: Equatable, Hashable {
 final class AppCoordinator {
     var selectedDestination: AppDestination = .dashboard
     var detailItem: DetailItem?
+    var openDetailInEditMode = false
 
     func showMandateDetail(_ mandateId: String) {
+        openDetailInEditMode = false
         detailItem = .mandate(mandateId)
     }
 
     func showPropertyDetail(_ propertyId: String) {
+        openDetailInEditMode = false
         detailItem = .property(propertyId)
     }
 
-    func showClientDetail(_ clientId: String) {
+    func showClientDetail(_ clientId: String, editing: Bool = false) {
+        openDetailInEditMode = editing
         detailItem = .client(clientId)
     }
 
     func dismissDetail() {
         detailItem = nil
+        openDetailInEditMode = false
     }
 }

@@ -38,6 +38,9 @@ struct ClientsView: View {
 
                 Button {
                     viewModel.addClient()
+                    if let newClient = viewModel.selectedClient {
+                        coordinator.showClientDetail(newClient.id, editing: true)
+                    }
                 } label: {
                     Label("Nouveau client", systemImage: "plus")
                 }

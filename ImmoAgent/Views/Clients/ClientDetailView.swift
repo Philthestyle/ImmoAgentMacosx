@@ -96,6 +96,12 @@ struct ClientDetailView: View {
             }
         }
         .background(Color(.windowBackgroundColor))
+        .onAppear {
+            if coordinator.openDetailInEditMode {
+                isEditing = true
+                coordinator.openDetailInEditMode = false
+            }
+        }
     }
 
     // MARK: - Header
