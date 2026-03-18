@@ -4,14 +4,21 @@ struct ContentView: View {
     @Environment(AppCoordinator.self) private var coordinator
     @EnvironmentObject private var container: DependencyContainer
 
+    @State private var columnVisibility: NavigationSplitViewVisibility = .automatic
+
     var body: some View {
         @Bindable var coord = coordinator
 
-        NavigationSplitView {
+        NavigationSplitView(columnVisibility: $columnVisibility) {
             sidebarContent
                 .navigationSplitViewColumnWidth(min: 220, ideal: 240, max: 280)
         } detail: {
             detailContent
+        }
+        .onChange(of: coordinator.detailItem) { _, newValue in
+            withAnimation {
+                columnVisibility = newValue != nil ? .detailOnly : .automatic
+            }
         }
     }
 

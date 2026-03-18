@@ -1,9 +1,16 @@
 import SwiftUI
 
 struct ClientDetailView: View {
-    let client: Client
+    @State private var client: Client
     let dataService: DataServiceProtocol
     @Environment(AppCoordinator.self) private var coordinator
+    @State private var isEditing = false
+    @State private var newInterest = ""
+
+    init(client: Client, dataService: DataServiceProtocol) {
+        _client = State(initialValue: client)
+        self.dataService = dataService
+    }
 
     private var linkedProperties: [Property] {
         dataService.properties.filter { client.propertyIds.contains($0.id) }
@@ -38,8 +45,25 @@ struct ClientDetailView: View {
 
                 Spacer()
 
-                BadgeView(text: client.source.label, variant: .info)
-                BadgeView.forClientStatus(client.status)
+                if isEditing {
+                    Button("Annuler") {
+                        isEditing = false
+                    }
+                    .buttonStyle(.bordered)
+
+                    Button("Enregistrer") {
+                        dataService.updateClient(client)
+                        isEditing = false
+                    }
+                    .buttonStyle(.borderedProminent)
+                } else {
+                    Button {
+                        isEditing = true
+                    } label: {
+                        Label("Modifier", systemImage: "pencil")
+                    }
+                    .buttonStyle(.bordered)
+                }
             }
             .padding(.horizontal, 28)
             .padding(.vertical, 16)
@@ -49,20 +73,18 @@ struct ClientDetailView: View {
             ScrollView {
                 VStack(alignment: .leading, spacing: 28) {
                     headerSection
-                    contactActions
+                    contactSection
 
                     Divider()
 
                     HStack(alignment: .top, spacing: 24) {
-                        // Left column
                         VStack(alignment: .leading, spacing: 20) {
                             linkedPropertiesSection
                             interestsSection
-                            infoSection
+                            searchCriteriaSection
                         }
                         .frame(maxWidth: .infinity)
 
-                        // Right column
                         VStack(alignment: .leading, spacing: 20) {
                             timelineSection
                             notesSection
@@ -96,20 +118,44 @@ struct ClientDetailView: View {
                     .foregroundStyle(.white)
             }
 
-            VStack(alignment: .leading, spacing: 6) {
-                Text(client.fullName)
-                    .font(.largeTitle)
-                    .fontWeight(.bold)
+            if isEditing {
+                VStack(alignment: .leading, spacing: 8) {
+                    HStack(spacing: 12) {
+                        TextField("Pr\u{00E9}nom", text: $client.firstName)
+                            .textFieldStyle(.roundedBorder)
+                        TextField("Nom", text: $client.lastName)
+                            .textFieldStyle(.roundedBorder)
+                    }
+                    HStack(spacing: 12) {
+                        Picker("Statut", selection: $client.status) {
+                            ForEach(ClientStatus.allCases, id: \.self) { s in
+                                Text(s.label).tag(s)
+                            }
+                        }
+                        .frame(width: 150)
 
-                HStack(spacing: 12) {
-                    Label(client.source.label, systemImage: "antenna.radiowaves.left.and.right")
-                        .font(.subheadline)
-                        .foregroundStyle(.secondary)
+                        Picker("Source", selection: $client.source) {
+                            ForEach(ClientSource.allCases, id: \.self) { s in
+                                Text(s.label).tag(s)
+                            }
+                        }
+                        .frame(width: 180)
+                    }
+                }
+            } else {
+                VStack(alignment: .leading, spacing: 6) {
+                    Text(client.fullName)
+                        .font(.largeTitle)
+                        .fontWeight(.bold)
 
-                    if client.budget > 0 {
-                        Label(CurrencyFormatter.format(client.budget), systemImage: "eurosign.circle")
-                            .font(.subheadline)
-                            .foregroundStyle(.blue)
+                    HStack(spacing: 8) {
+                        BadgeView(text: client.source.label, variant: .info)
+                        BadgeView.forClientStatus(client.status)
+                        if client.budget > 0 {
+                            Label(CurrencyFormatter.format(client.budget), systemImage: "eurosign.circle")
+                                .font(.subheadline)
+                                .foregroundStyle(.blue)
+                        }
                     }
                 }
             }
@@ -118,27 +164,74 @@ struct ClientDetailView: View {
         }
     }
 
-    // MARK: - Contact Actions
+    // MARK: - Contact
 
-    private var contactActions: some View {
-        HStack(spacing: 12) {
-            Button {
-                if let url = URL(string: "tel:\(client.phone)") {
-                    NSWorkspace.shared.open(url)
+    private var contactSection: some View {
+        Group {
+            if isEditing {
+                HStack(spacing: 12) {
+                    HStack {
+                        Image(systemName: "phone.fill")
+                            .foregroundStyle(.blue)
+                        TextField("T\u{00E9}l\u{00E9}phone", text: $client.phone)
+                            .textFieldStyle(.roundedBorder)
+                    }
+                    HStack {
+                        Image(systemName: "envelope.fill")
+                            .foregroundStyle(.blue)
+                        TextField("Email", text: $client.email)
+                            .textFieldStyle(.roundedBorder)
+                    }
+                    HStack {
+                        Image(systemName: "eurosign.circle")
+                            .foregroundStyle(.blue)
+                        TextField("Budget", value: $client.budget, format: .number)
+                            .textFieldStyle(.roundedBorder)
+                            .frame(width: 120)
+                    }
                 }
-            } label: {
-                Label(client.phone, systemImage: "phone.fill")
-            }
-            .buttonStyle(.bordered)
+            } else {
+                HStack(spacing: 12) {
+                    if !client.phone.isEmpty {
+                        Button {
+                            if let url = URL(string: "tel:\(client.phone)") {
+                                NSWorkspace.shared.open(url)
+                            }
+                        } label: {
+                            Label(client.phone, systemImage: "phone.fill")
+                        }
+                        .buttonStyle(.bordered)
+                    }
 
-            Button {
-                if let url = URL(string: "mailto:\(client.email)") {
-                    NSWorkspace.shared.open(url)
+                    if !client.email.isEmpty {
+                        Button {
+                            if let url = URL(string: "mailto:\(client.email)") {
+                                NSWorkspace.shared.open(url)
+                            }
+                        } label: {
+                            Label(client.email, systemImage: "envelope.fill")
+                        }
+                        .buttonStyle(.bordered)
+                    }
                 }
-            } label: {
-                Label(client.email, systemImage: "envelope.fill")
             }
-            .buttonStyle(.bordered)
+        }
+    }
+
+    // MARK: - Search Criteria
+
+    private var searchCriteriaSection: some View {
+        sectionCard(title: "CRIT\u{00C8}RES DE RECHERCHE", icon: "magnifyingglass") {
+            if isEditing {
+                TextEditor(text: $client.searchCriteria)
+                    .frame(minHeight: 60)
+                    .font(.body)
+                    .scrollContentBackground(.hidden)
+            } else {
+                Text(client.searchCriteria.isEmpty ? "Aucun crit\u{00E8}re" : client.searchCriteria)
+                    .font(.body)
+                    .foregroundStyle(client.searchCriteria.isEmpty ? .secondary : .primary)
+            }
         }
     }
 
@@ -198,21 +291,23 @@ struct ClientDetailView: View {
         }
     }
 
-    // MARK: - Interests / Preferences
+    // MARK: - Interests
 
     private var interestsSection: some View {
         sectionCard(title: "CENTRES D\u{2019}INT\u{00C9}R\u{00CA}T & PR\u{00C9}F\u{00C9}RENCES", icon: "heart.text.square") {
-            if client.interests.isEmpty {
-                Text("Aucune pr\u{00E9}f\u{00E9}rence enregistr\u{00E9}e")
-                    .font(.subheadline)
-                    .foregroundStyle(.secondary)
-                    .italic()
-            } else {
-                VStack(alignment: .leading, spacing: 8) {
+            VStack(alignment: .leading, spacing: 8) {
+                if !isEditing {
                     Text("Sujets \u{00E0} aborder lors des \u{00E9}changes :")
                         .font(.caption)
                         .foregroundStyle(.secondary)
+                }
 
+                if client.interests.isEmpty && !isEditing {
+                    Text("Aucune pr\u{00E9}f\u{00E9}rence enregistr\u{00E9}e")
+                        .font(.subheadline)
+                        .foregroundStyle(.secondary)
+                        .italic()
+                } else {
                     FlowLayout(spacing: 6) {
                         ForEach(client.interests, id: \.self) { interest in
                             HStack(spacing: 4) {
@@ -221,6 +316,17 @@ struct ClientDetailView: View {
                                     .foregroundStyle(.yellow)
                                 Text(interest)
                                     .font(.caption)
+
+                                if isEditing {
+                                    Button {
+                                        client.interests.removeAll { $0 == interest }
+                                    } label: {
+                                        Image(systemName: "xmark.circle.fill")
+                                            .font(.caption2)
+                                            .foregroundStyle(.secondary)
+                                    }
+                                    .buttonStyle(.plain)
+                                }
                             }
                             .padding(.horizontal, 10)
                             .padding(.vertical, 6)
@@ -229,31 +335,39 @@ struct ClientDetailView: View {
                         }
                     }
                 }
+
+                if isEditing {
+                    HStack(spacing: 8) {
+                        TextField("Ajouter un int\u{00E9}r\u{00EA}t...", text: $newInterest)
+                            .textFieldStyle(.roundedBorder)
+                            .onSubmit { addInterest() }
+                        Button("Ajouter") { addInterest() }
+                            .buttonStyle(.bordered)
+                            .controlSize(.small)
+                            .disabled(newInterest.isEmpty)
+                    }
+                }
             }
         }
     }
 
-    // MARK: - Info
-
-    private var infoSection: some View {
-        sectionCard(title: "INFORMATIONS", icon: "info.circle") {
-            VStack(alignment: .leading, spacing: 8) {
-                infoRow(label: "Email", value: client.email)
-                infoRow(label: "T\u{00E9}l\u{00E9}phone", value: client.phone)
-                infoRow(label: "Source", value: client.source.label)
-                infoRow(label: "Statut", value: client.status.label)
-                infoRow(label: "Recherche", value: client.searchCriteria)
-                infoRow(label: "Cr\u{00E9}\u{00E9} le", value: client.createdAt)
-                infoRow(label: "Dernier contact", value: client.lastContact)
-            }
-        }
+    private func addInterest() {
+        let trimmed = newInterest.trimmingCharacters(in: .whitespaces)
+        guard !trimmed.isEmpty else { return }
+        client.interests.append(trimmed)
+        newInterest = ""
     }
 
     // MARK: - Notes
 
     private var notesSection: some View {
         sectionCard(title: "NOTES", icon: "note.text") {
-            if client.notes.isEmpty {
+            if isEditing {
+                TextEditor(text: $client.notes)
+                    .frame(minHeight: 80)
+                    .font(.body)
+                    .scrollContentBackground(.hidden)
+            } else if client.notes.isEmpty {
                 Text("Aucune note")
                     .font(.subheadline)
                     .foregroundStyle(.secondary)
@@ -281,7 +395,6 @@ struct ClientDetailView: View {
                 VStack(spacing: 0) {
                     ForEach(Array(events.enumerated()), id: \.offset) { index, event in
                         HStack(alignment: .top, spacing: 12) {
-                            // Timeline line + dot
                             VStack(spacing: 0) {
                                 Circle()
                                     .fill(event.color)
@@ -297,7 +410,6 @@ struct ClientDetailView: View {
                             }
                             .frame(width: 10)
 
-                            // Event content
                             VStack(alignment: .leading, spacing: 4) {
                                 HStack {
                                     Image(systemName: event.icon)
@@ -341,7 +453,6 @@ struct ClientDetailView: View {
     private func buildTimeline() -> [TimelineEvent] {
         var events: [TimelineEvent] = []
 
-        // Visits
         for visit in clientVisits {
             let statusIcon: String
             let color: Color
@@ -361,7 +472,6 @@ struct ClientDetailView: View {
             ))
         }
 
-        // Calls
         for call in clientCalls {
             events.append(TimelineEvent(
                 icon: "phone.fill",
@@ -373,7 +483,6 @@ struct ClientDetailView: View {
             ))
         }
 
-        // Creation event
         events.append(TimelineEvent(
             icon: "person.badge.plus",
             title: "Client cr\u{00E9}\u{00E9}",
@@ -406,17 +515,6 @@ struct ClientDetailView: View {
         .frame(maxWidth: .infinity, alignment: .leading)
         .background(Color(.controlBackgroundColor))
         .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
-    }
-
-    private func infoRow(label: String, value: String) -> some View {
-        HStack(alignment: .top) {
-            Text(label)
-                .font(.subheadline)
-                .foregroundStyle(.secondary)
-                .frame(width: 110, alignment: .leading)
-            Text(value)
-                .font(.subheadline)
-        }
     }
 
     private func colorForStatus(_ status: ClientStatus) -> Color {

@@ -85,6 +85,24 @@ final class DataService: DataServiceProtocol, ObservableObject {
         }
     }
 
+    func updateClient(_ client: Client) {
+        if let index = clients.firstIndex(where: { $0.id == client.id }) {
+            clients[index] = client
+        }
+        if !isDemo, let index = realClients.firstIndex(where: { $0.id == client.id }) {
+            realClients[index] = client
+        }
+    }
+
+    func updateProperty(_ property: Property) {
+        if let index = properties.firstIndex(where: { $0.id == property.id }) {
+            properties[index] = property
+        }
+        if !isDemo, let index = realProperties.firstIndex(where: { $0.id == property.id }) {
+            realProperties[index] = property
+        }
+    }
+
     func addVisit(_ visit: Visit) {
         visits.append(visit)
         if !isDemo { realVisits.append(visit) }
