@@ -28,13 +28,14 @@ final class AnalyticsViewModel: ObservableObject {
     var calls: [PhoneCall] { dataService.phoneCalls }
 
     var ventesCount: Int { properties.filter { $0.status == .sold }.count }
-    var caFacture: Double { properties.compactMap(\.salePrice).reduce(0, +) }
+    var volumeVentes: Double { properties.compactMap(\.salePrice).reduce(0, +) }
+    var caFacture: Double { properties.compactMap(\.saleCommissionAmount).reduce(0, +) }
     var prixMoyen: Double {
         let sold = properties.filter { $0.status == .sold }
         guard !sold.isEmpty else { return 0 }
-        return caFacture / Double(sold.count)
+        return volumeVentes / Double(sold.count)
     }
-    var commission: Double { properties.compactMap(\.saleCommissionAmount).reduce(0, +) }
+    var commission: Double { caFacture }
     var biensActifs: Int { properties.filter { $0.status == .available || $0.status == .underOffer }.count }
     var visitsCount: Int { visits.count }
     var mandatsSignes: Int { mandates.filter { $0.status == .complete || $0.status == .inProgress }.count }
@@ -140,7 +141,7 @@ final class AnalyticsViewModel: ObservableObject {
         [
             MonthPerformance(month: "Janvier", ventes: 0, ca: 0, mandats: 2),
             MonthPerformance(month: "F\u{00E9}vrier", ventes: 0, ca: 0, mandats: 3),
-            MonthPerformance(month: "Mars", ventes: ventesCount, ca: caFacture, mandats: mandatsSignes)
+            MonthPerformance(month: "Mars", ventes: ventesCount, ca: commission, mandats: mandatsSignes)
         ]
     }
 }

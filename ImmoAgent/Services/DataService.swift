@@ -349,8 +349,8 @@ final class DataService: DataServiceProtocol, ObservableObject {
             ownerEmail: "luc.hermans@email.be",
             mandateId: "m5",
             salePrice: 365_000,
-            saleCommissionPercent: 3,
-            saleCommissionAmount: 10_950,
+            saleCommissionPercent: 0.25,
+            saleCommissionAmount: 912.50,
             saleDate: "2026-03-01"
         ),
         Property(
