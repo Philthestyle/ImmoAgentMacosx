@@ -49,6 +49,53 @@ final class AnalyticsViewModel: ObservableObject {
     var funnelMandats: Int { mandatsSignes }
     var funnelVentes: Int { ventesCount }
 
+    // Stats aggregate
+    struct Stats {
+        let ventesCount: Int
+        let formattedCA: String
+        let formattedPrixMoyen: String
+        let formattedCommission: String
+        let biensActifs: Int
+        let visitsCount: Int
+        let mandatsSignes: Int
+        let tauxConversion: Double
+    }
+
+    var stats: Stats {
+        Stats(
+            ventesCount: ventesCount,
+            formattedCA: CurrencyFormatter.format(caFacture),
+            formattedPrixMoyen: CurrencyFormatter.format(prixMoyen),
+            formattedCommission: CurrencyFormatter.format(commission),
+            biensActifs: biensActifs,
+            visitsCount: visitsCount,
+            mandatsSignes: mandatsSignes,
+            tauxConversion: tauxConversion
+        )
+    }
+
+    // Funnel aggregate
+    struct Funnel {
+        let appels: Int
+        let prisesEnCompte: Int
+        let mandats: Int
+        let ventes: Int
+    }
+
+    var funnel: Funnel {
+        Funnel(
+            appels: funnelAppels,
+            prisesEnCompte: funnelPrisesEnCompte,
+            mandats: funnelMandats,
+            ventes: funnelVentes
+        )
+    }
+
+    // Formatter helper
+    func formatted(_ value: Double) -> String {
+        CurrencyFormatter.format(value)
+    }
+
     // Net income calculator
     var grossCommission: Double { commission }
     var socialCharges: Double { grossCommission * 0.2065 }

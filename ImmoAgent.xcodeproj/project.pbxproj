@@ -1,0 +1,544 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		113289227AFCC308EF5AB414 /* PhoneCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FE7ABA933668EBFA90AEA0E /* PhoneCall.swift */; };
+		138CAFC5B44FDE761B4D1FC1 /* PropertiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77353FF33721CED905252F3F /* PropertiesView.swift */; };
+		1F7856EEFB1D1D0D58D04BCE /* Visit.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB748F3A368E369CC84E001 /* Visit.swift */; };
+		2EC95AC40D7EE89F27661DB9 /* DashboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3000AD71B60D8BA4818910 /* DashboardViewModel.swift */; };
+		2F2BDBEF9AD3518D004C3158 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DC9D7C7176B5CA70A260A35 /* DataService.swift */; };
+		2FDDF149F519D79795DFD0FE /* AgendaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC8DEAF2AF55D4C2353E36C /* AgendaView.swift */; };
+		3BAC8A2439B7F2D6356C4097 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A65B80B50900EB1227006B8 /* Client.swift */; };
+		4D6105483FD0FD3B0B90B776 /* PropertyCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319D5FE1CC379C27BBB505DD /* PropertyCardView.swift */; };
+		500EB7C7F0CEC38B65D0F053 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA988F8783CE1188186F4D76 /* Assets.xcassets */; };
+		60E56B637944D1B9EB41DBAF /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DE0179A795B6C1D920D710 /* AppCoordinator.swift */; };
+		65B8449CDAC54CD59472E7BB /* Mandate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE6E3719BD0C7E5E791B9B12 /* Mandate.swift */; };
+		6F331DF7F82D05ACF4885A2E /* AnalyticsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1A520CACE230F32061EF75 /* AnalyticsViewModel.swift */; };
+		73C504DFF0D18C5EDE4FB982 /* Property.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02E241BF076C63AC456CCA8 /* Property.swift */; };
+		7F1B2BB03B69F3CAC2AEF229 /* PropertiesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D17C9271E9D89F78D3B964A /* PropertiesViewModel.swift */; };
+		85FB444B02351DD0CBB49BB7 /* ClientsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B9273FE88B88FBA9D8BBDF /* ClientsView.swift */; };
+		9146391F9104BD8BD0693622 /* BadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B49BA8FA6CCA9C7486E754 /* BadgeView.swift */; };
+		ADD80C3364105428563053CD /* MandatesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D9423D99B4288C98ABE3107 /* MandatesViewModel.swift */; };
+		BDEE89BFB8D3E64FAE31FF45 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B2131B6AD94EE1E11E4BE29 /* SettingsView.swift */; };
+		BF0E8350B233DBCD59B8250D /* ImmoAgentApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1238073BFA87F9A32211C43 /* ImmoAgentApp.swift */; };
+		C053C40BD04A601B6742722D /* PropertyDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B58E20D084B71D9988CD1D6 /* PropertyDetailView.swift */; };
+		C0EEB42A06CB39D739435024 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E26E322F42DFC3178AEC94 /* DashboardView.swift */; };
+		C9C8E446321D0384F93A183A /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D37B2E4389F9E084C8994E /* EmptyStateView.swift */; };
+		CCF64F305193149D39BC55FE /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA61B9B8837D8E8512C870A /* UserProfile.swift */; };
+		D16C941D965E944C7DC9FF38 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349F9B0791014F6A0CFE53EA /* ContentView.swift */; };
+		DE6D581848CC533BE002F2A0 /* KPICardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A168D272A6119DDC9ABE72AF /* KPICardView.swift */; };
+		E8BE8BF1271C45C3331F0675 /* ClientsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F09953B15C7867EC7961BF1 /* ClientsViewModel.swift */; };
+		F17226466D36433D3198084E /* MandatesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626AE9B07152B5EDF681F10A /* MandatesView.swift */; };
+		F79E0FD24F43E0B7C3D846F1 /* DependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E524FD60753FD8D7F15DB5D /* DependencyContainer.swift */; };
+		F920FFAA1BE42E1E765FFDAD /* AnalyticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F53D293AFF3816151FA105 /* AnalyticsView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		0D9423D99B4288C98ABE3107 /* MandatesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MandatesViewModel.swift; sourceTree = "<group>"; };
+		1A65B80B50900EB1227006B8 /* Client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
+		29F53D293AFF3816151FA105 /* AnalyticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsView.swift; sourceTree = "<group>"; };
+		319D5FE1CC379C27BBB505DD /* PropertyCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyCardView.swift; sourceTree = "<group>"; };
+		349F9B0791014F6A0CFE53EA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		37E26E322F42DFC3178AEC94 /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
+		3D17C9271E9D89F78D3B964A /* PropertiesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertiesViewModel.swift; sourceTree = "<group>"; };
+		3E524FD60753FD8D7F15DB5D /* DependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyContainer.swift; sourceTree = "<group>"; };
+		4B2131B6AD94EE1E11E4BE29 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		4F09953B15C7867EC7961BF1 /* ClientsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientsViewModel.swift; sourceTree = "<group>"; };
+		626AE9B07152B5EDF681F10A /* MandatesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MandatesView.swift; sourceTree = "<group>"; };
+		64DE0179A795B6C1D920D710 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		6B58E20D084B71D9988CD1D6 /* PropertyDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyDetailView.swift; sourceTree = "<group>"; };
+		77353FF33721CED905252F3F /* PropertiesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertiesView.swift; sourceTree = "<group>"; };
+		7DA4F7916993A708E9A674E1 /* ImmoAgent.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImmoAgent.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7DC9D7C7176B5CA70A260A35 /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
+		8C3000AD71B60D8BA4818910 /* DashboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewModel.swift; sourceTree = "<group>"; };
+		8FE7ABA933668EBFA90AEA0E /* PhoneCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneCall.swift; sourceTree = "<group>"; };
+		A1238073BFA87F9A32211C43 /* ImmoAgentApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImmoAgentApp.swift; sourceTree = "<group>"; };
+		A168D272A6119DDC9ABE72AF /* KPICardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KPICardView.swift; sourceTree = "<group>"; };
+		A1B49BA8FA6CCA9C7486E754 /* BadgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeView.swift; sourceTree = "<group>"; };
+		A8D37B2E4389F9E084C8994E /* EmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateView.swift; sourceTree = "<group>"; };
+		CA988F8783CE1188186F4D76 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CEC8DEAF2AF55D4C2353E36C /* AgendaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgendaView.swift; sourceTree = "<group>"; };
+		D02E241BF076C63AC456CCA8 /* Property.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Property.swift; sourceTree = "<group>"; };
+		DA6601E6E59A8F56DE163CC3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		DAA61B9B8837D8E8512C870A /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
+		DCB748F3A368E369CC84E001 /* Visit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Visit.swift; sourceTree = "<group>"; };
+		EAB689E687E20BEE8BE887E2 /* ImmoAgent.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ImmoAgent.entitlements; sourceTree = "<group>"; };
+		EE6E3719BD0C7E5E791B9B12 /* Mandate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mandate.swift; sourceTree = "<group>"; };
+		F9B9273FE88B88FBA9D8BBDF /* ClientsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientsView.swift; sourceTree = "<group>"; };
+		FE1A520CACE230F32061EF75 /* AnalyticsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsViewModel.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		0E617D1E526CF018448710D9 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				A1238073BFA87F9A32211C43 /* ImmoAgentApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		137265D8FE467971035D6B43 /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				64DE0179A795B6C1D920D710 /* AppCoordinator.swift */,
+			);
+			path = Coordinators;
+			sourceTree = "<group>";
+		};
+		2229FB2A78065DE022E09848 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				A1B49BA8FA6CCA9C7486E754 /* BadgeView.swift */,
+				A8D37B2E4389F9E084C8994E /* EmptyStateView.swift */,
+				A168D272A6119DDC9ABE72AF /* KPICardView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		230ECEE738BA62B00904F83C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7DA4F7916993A708E9A674E1 /* ImmoAgent.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		35D26949D0D38322244970D6 = {
+			isa = PBXGroup;
+			children = (
+				F02AFE5837777BB0ACBC3E3B /* ImmoAgent */,
+				230ECEE738BA62B00904F83C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		4085B51846339407F8D9EBDF /* Analytics */ = {
+			isa = PBXGroup;
+			children = (
+				29F53D293AFF3816151FA105 /* AnalyticsView.swift */,
+			);
+			path = Analytics;
+			sourceTree = "<group>";
+		};
+		69D5FD97F3169D960C43D7A1 /* DI */ = {
+			isa = PBXGroup;
+			children = (
+				3E524FD60753FD8D7F15DB5D /* DependencyContainer.swift */,
+			);
+			path = DI;
+			sourceTree = "<group>";
+		};
+		741C9AD1CD87FBE66551C0DA /* Properties */ = {
+			isa = PBXGroup;
+			children = (
+				77353FF33721CED905252F3F /* PropertiesView.swift */,
+				319D5FE1CC379C27BBB505DD /* PropertyCardView.swift */,
+				6B58E20D084B71D9988CD1D6 /* PropertyDetailView.swift */,
+			);
+			path = Properties;
+			sourceTree = "<group>";
+		};
+		80D68CF9A126F08A912E8C0C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				1A65B80B50900EB1227006B8 /* Client.swift */,
+				EE6E3719BD0C7E5E791B9B12 /* Mandate.swift */,
+				8FE7ABA933668EBFA90AEA0E /* PhoneCall.swift */,
+				D02E241BF076C63AC456CCA8 /* Property.swift */,
+				DAA61B9B8837D8E8512C870A /* UserProfile.swift */,
+				DCB748F3A368E369CC84E001 /* Visit.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		93C1A761CBA4C29AE5CAA059 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				4B2131B6AD94EE1E11E4BE29 /* SettingsView.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		95D89AE776C786BFC67666A8 /* Mandates */ = {
+			isa = PBXGroup;
+			children = (
+				626AE9B07152B5EDF681F10A /* MandatesView.swift */,
+			);
+			path = Mandates;
+			sourceTree = "<group>";
+		};
+		9A07B7FC29DE7EB11EF780E3 /* Dashboard */ = {
+			isa = PBXGroup;
+			children = (
+				37E26E322F42DFC3178AEC94 /* DashboardView.swift */,
+			);
+			path = Dashboard;
+			sourceTree = "<group>";
+		};
+		B0918127EBD51CE66CCA719A /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				FE1A520CACE230F32061EF75 /* AnalyticsViewModel.swift */,
+				4F09953B15C7867EC7961BF1 /* ClientsViewModel.swift */,
+				8C3000AD71B60D8BA4818910 /* DashboardViewModel.swift */,
+				0D9423D99B4288C98ABE3107 /* MandatesViewModel.swift */,
+				3D17C9271E9D89F78D3B964A /* PropertiesViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		B84D028F0A71CC65EA01917A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				EB1EA0FA0DE11FD5B2222138 /* Agenda */,
+				4085B51846339407F8D9EBDF /* Analytics */,
+				D64618BC48935F5656D9C326 /* Clients */,
+				2229FB2A78065DE022E09848 /* Components */,
+				9A07B7FC29DE7EB11EF780E3 /* Dashboard */,
+				95D89AE776C786BFC67666A8 /* Mandates */,
+				741C9AD1CD87FBE66551C0DA /* Properties */,
+				93C1A761CBA4C29AE5CAA059 /* Settings */,
+				349F9B0791014F6A0CFE53EA /* ContentView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		D4181671F0596CEC3AA69060 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				7DC9D7C7176B5CA70A260A35 /* DataService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		D64618BC48935F5656D9C326 /* Clients */ = {
+			isa = PBXGroup;
+			children = (
+				F9B9273FE88B88FBA9D8BBDF /* ClientsView.swift */,
+			);
+			path = Clients;
+			sourceTree = "<group>";
+		};
+		EB1EA0FA0DE11FD5B2222138 /* Agenda */ = {
+			isa = PBXGroup;
+			children = (
+				CEC8DEAF2AF55D4C2353E36C /* AgendaView.swift */,
+			);
+			path = Agenda;
+			sourceTree = "<group>";
+		};
+		F02AFE5837777BB0ACBC3E3B /* ImmoAgent */ = {
+			isa = PBXGroup;
+			children = (
+				0E617D1E526CF018448710D9 /* App */,
+				137265D8FE467971035D6B43 /* Coordinators */,
+				69D5FD97F3169D960C43D7A1 /* DI */,
+				80D68CF9A126F08A912E8C0C /* Models */,
+				D4181671F0596CEC3AA69060 /* Services */,
+				B0918127EBD51CE66CCA719A /* ViewModels */,
+				B84D028F0A71CC65EA01917A /* Views */,
+				CA988F8783CE1188186F4D76 /* Assets.xcassets */,
+				EAB689E687E20BEE8BE887E2 /* ImmoAgent.entitlements */,
+				DA6601E6E59A8F56DE163CC3 /* Info.plist */,
+			);
+			path = ImmoAgent;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		BE710D2476074AD61D5E20A3 /* ImmoAgent */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6B89E0C86520E7F3C2AE3AA7 /* Build configuration list for PBXNativeTarget "ImmoAgent" */;
+			buildPhases = (
+				F313F16D467DAE0BDF93FE3D /* Sources */,
+				D4167A5DEDD13D3A043A8230 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ImmoAgent;
+			packageProductDependencies = (
+			);
+			productName = ImmoAgent;
+			productReference = 7DA4F7916993A708E9A674E1 /* ImmoAgent.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B93389F4E6DAD4F809C8C0F4 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					BE710D2476074AD61D5E20A3 = {
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 40B4CDC21F7DEA3858DC94D6 /* Build configuration list for PBXProject "ImmoAgent" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 35D26949D0D38322244970D6;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BE710D2476074AD61D5E20A3 /* ImmoAgent */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D4167A5DEDD13D3A043A8230 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				500EB7C7F0CEC38B65D0F053 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F313F16D467DAE0BDF93FE3D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2FDDF149F519D79795DFD0FE /* AgendaView.swift in Sources */,
+				F920FFAA1BE42E1E765FFDAD /* AnalyticsView.swift in Sources */,
+				6F331DF7F82D05ACF4885A2E /* AnalyticsViewModel.swift in Sources */,
+				60E56B637944D1B9EB41DBAF /* AppCoordinator.swift in Sources */,
+				9146391F9104BD8BD0693622 /* BadgeView.swift in Sources */,
+				3BAC8A2439B7F2D6356C4097 /* Client.swift in Sources */,
+				85FB444B02351DD0CBB49BB7 /* ClientsView.swift in Sources */,
+				E8BE8BF1271C45C3331F0675 /* ClientsViewModel.swift in Sources */,
+				D16C941D965E944C7DC9FF38 /* ContentView.swift in Sources */,
+				C0EEB42A06CB39D739435024 /* DashboardView.swift in Sources */,
+				2EC95AC40D7EE89F27661DB9 /* DashboardViewModel.swift in Sources */,
+				2F2BDBEF9AD3518D004C3158 /* DataService.swift in Sources */,
+				F79E0FD24F43E0B7C3D846F1 /* DependencyContainer.swift in Sources */,
+				C9C8E446321D0384F93A183A /* EmptyStateView.swift in Sources */,
+				BF0E8350B233DBCD59B8250D /* ImmoAgentApp.swift in Sources */,
+				DE6D581848CC533BE002F2A0 /* KPICardView.swift in Sources */,
+				65B8449CDAC54CD59472E7BB /* Mandate.swift in Sources */,
+				F17226466D36433D3198084E /* MandatesView.swift in Sources */,
+				ADD80C3364105428563053CD /* MandatesViewModel.swift in Sources */,
+				113289227AFCC308EF5AB414 /* PhoneCall.swift in Sources */,
+				138CAFC5B44FDE761B4D1FC1 /* PropertiesView.swift in Sources */,
+				7F1B2BB03B69F3CAC2AEF229 /* PropertiesViewModel.swift in Sources */,
+				73C504DFF0D18C5EDE4FB982 /* Property.swift in Sources */,
+				4D6105483FD0FD3B0B90B776 /* PropertyCardView.swift in Sources */,
+				C053C40BD04A601B6742722D /* PropertyDetailView.swift in Sources */,
+				BDEE89BFB8D3E64FAE31FF45 /* SettingsView.swift in Sources */,
+				CCF64F305193149D39BC55FE /* UserProfile.swift in Sources */,
+				1F7856EEFB1D1D0D58D04BCE /* Visit.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		8170A8A2F90BC8AB1D84B3E2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.9;
+			};
+			name = Debug;
+		};
+		C8223DD1C9832DDCF478E2CF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = ImmoAgent/ImmoAgent.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = ImmoAgent/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.immoagent.macos;
+				PRODUCT_NAME = ImmoAgent;
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+			};
+			name = Debug;
+		};
+		CF048930FEF4E5792E6E84E6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.9;
+			};
+			name = Release;
+		};
+		ED60DD8678834C3823EADFA4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = ImmoAgent/ImmoAgent.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = ImmoAgent/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.immoagent.macos;
+				PRODUCT_NAME = ImmoAgent;
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		40B4CDC21F7DEA3858DC94D6 /* Build configuration list for PBXProject "ImmoAgent" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8170A8A2F90BC8AB1D84B3E2 /* Debug */,
+				CF048930FEF4E5792E6E84E6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		6B89E0C86520E7F3C2AE3AA7 /* Build configuration list for PBXNativeTarget "ImmoAgent" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C8223DD1C9832DDCF478E2CF /* Debug */,
+				ED60DD8678834C3823EADFA4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B93389F4E6DAD4F809C8C0F4 /* Project object */;
+}

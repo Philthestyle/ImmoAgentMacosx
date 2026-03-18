@@ -259,7 +259,7 @@ struct AnalyticsView: View {
             Text(value)
                 .font(.subheadline)
                 .fontWeight(.semibold)
-                .foregroundStyle(isPositive ? .primary : .red)
+                .foregroundStyle(isPositive ? Color.primary : Color.red)
         }
     }
 
