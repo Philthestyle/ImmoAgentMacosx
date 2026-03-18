@@ -26,7 +26,7 @@ enum ClientSource: String, Codable, CaseIterable {
     }
 }
 
-struct Client: Identifiable, Codable {
+struct Client: Identifiable, Codable, Hashable {
     let id: String
     var firstName: String
     var lastName: String
