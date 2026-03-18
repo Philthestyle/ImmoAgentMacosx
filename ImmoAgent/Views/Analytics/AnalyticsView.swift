@@ -20,6 +20,7 @@ struct AnalyticsView: View {
                     funnelSection
                     netIncomeCalculator
                 }
+                salesBreakdown
                 monthlyPerformanceTable
             }
             .padding(28)
@@ -321,6 +322,91 @@ struct AnalyticsView: View {
                 .fontWeight(.semibold)
                 .foregroundStyle(isPositive ? Color.primary : Color.red)
         }
+    }
+
+    // MARK: - Sales Breakdown
+
+    private var salesBreakdown: some View {
+        VStack(alignment: .leading, spacing: 16) {
+            HStack {
+                Image(systemName: "banknote.fill")
+                    .foregroundStyle(.green)
+                Text("D\u{00E9}tail des ventes — Montant vir\u{00E9} sur votre compte")
+                    .font(.headline)
+                Spacer()
+            }
+
+            if viewModel.salesDetails.isEmpty {
+                Text("Aucune vente enregistr\u{00E9}e")
+                    .font(.subheadline)
+                    .foregroundStyle(.secondary)
+                    .italic()
+            } else {
+                // Header
+                HStack {
+                    Text("Bien")
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                    Text("Prix de vente")
+                        .frame(width: 130, alignment: .trailing)
+                    Text("Commission")
+                        .frame(width: 120, alignment: .trailing)
+                    Text("Net sur compte")
+                        .frame(width: 130, alignment: .trailing)
+                }
+                .font(.caption)
+                .fontWeight(.bold)
+                .foregroundStyle(.secondary)
+                .padding(.horizontal, 8)
+
+                Divider()
+
+                ForEach(viewModel.salesDetails) { sale in
+                    HStack {
+                        Text(sale.title)
+                            .lineLimit(1)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                        Text(viewModel.formatted(sale.salePrice))
+                            .frame(width: 130, alignment: .trailing)
+                        Text(viewModel.formatted(sale.commission))
+                            .frame(width: 120, alignment: .trailing)
+                        Text(viewModel.formatted(sale.netCommission))
+                            .frame(width: 130, alignment: .trailing)
+                            .fontWeight(.bold)
+                            .foregroundStyle(.green)
+                    }
+                    .font(.subheadline)
+                    .padding(.vertical, 8)
+                    .padding(.horizontal, 8)
+                    .background(
+                        RoundedRectangle(cornerRadius: 6)
+                            .fill(Color.green.opacity(0.04))
+                    )
+                }
+
+                Divider()
+
+                // Total
+                HStack {
+                    Text("Total net")
+                        .fontWeight(.bold)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                    Text("")
+                        .frame(width: 130)
+                    Text("")
+                        .frame(width: 120)
+                    Text(viewModel.formatted(viewModel.netEstimate))
+                        .frame(width: 130, alignment: .trailing)
+                        .fontWeight(.bold)
+                        .foregroundStyle(.green)
+                }
+                .font(.subheadline)
+                .padding(.horizontal, 8)
+            }
+        }
+        .padding(20)
+        .background(Color(.controlBackgroundColor))
+        .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+        .shadow(color: .black.opacity(0.06), radius: 4, y: 2)
     }
 
     // MARK: - Monthly Performance Table

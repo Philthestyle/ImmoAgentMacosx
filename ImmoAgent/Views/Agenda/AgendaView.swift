@@ -33,6 +33,14 @@ enum EventType: String, CaseIterable, Identifiable {
 struct AgendaView: View {
     let dataService: DataServiceProtocol
 
+    private func toggleCallDone(_ call: PhoneCall) {
+        if let index = dataService.phoneCalls.firstIndex(where: { $0.id == call.id }) {
+            withAnimation(.easeInOut(duration: 0.3)) {
+                dataService.phoneCalls[index].done.toggle()
+            }
+        }
+    }
+
     private var visits: [Visit] { dataService.visits }
 
     private var today: String {
@@ -45,7 +53,9 @@ struct AgendaView: View {
     private var upcomingVisits: [Visit] { visits.filter { $0.date > today && $0.status == .scheduled } }
     private var pastVisits: [Visit] { visits.filter { $0.date < today || $0.status == .completed } }
 
-    private var todayCalls: [PhoneCall] { dataService.phoneCalls.filter { !$0.done } }
+    private var todayCalls: [PhoneCall] {
+        dataService.phoneCalls.sorted { !$0.done && $1.done }
+    }
 
     var body: some View {
         ScrollView {
@@ -125,7 +135,17 @@ struct AgendaView: View {
             }
 
             ForEach(todayCalls) { call in
-                HStack(spacing: 16) {
+                HStack(spacing: 12) {
+                    // Radio button
+                    Button {
+                        toggleCallDone(call)
+                    } label: {
+                        Image(systemName: call.done ? "checkmark.circle.fill" : "circle")
+                            .font(.title2)
+                            .foregroundStyle(call.done ? .green : .secondary)
+                    }
+                    .buttonStyle(.plain)
+
                     VStack(spacing: 2) {
                         if let time = call.time {
                             Text(time)
@@ -139,7 +159,7 @@ struct AgendaView: View {
                                 .foregroundStyle(.secondary)
                         }
                     }
-                    .frame(width: 80)
+                    .frame(width: 60)
 
                     Rectangle()
                         .fill(Color.green.opacity(0.3))
@@ -152,6 +172,8 @@ struct AgendaView: View {
                                 .foregroundStyle(.green)
                             Text(call.contactName)
                                 .font(.headline)
+                                .strikethrough(call.done)
+                                .foregroundStyle(call.done ? .secondary : .primary)
                             Spacer()
                             priorityBadge(call.priority)
                         }
