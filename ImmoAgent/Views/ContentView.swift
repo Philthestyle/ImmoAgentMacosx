@@ -38,7 +38,10 @@ struct ContentView: View {
             // Navigation items
             List(selection: Binding(
                 get: { coordinator.selectedDestination },
-                set: { coordinator.selectedDestination = $0 }
+                set: {
+                    coordinator.selectedDestination = $0
+                    coordinator.dismissDetail()
+                }
             )) {
                 Section {
                     ForEach(AppDestination.allCases.filter { $0 != .settings }) { dest in
@@ -136,21 +139,38 @@ struct ContentView: View {
 
     @ViewBuilder
     private var detailContent: some View {
-        switch coordinator.selectedDestination {
-        case .dashboard:
-            DashboardView(dataService: dataService)
-        case .properties:
-            PropertiesView(dataService: dataService)
-        case .clients:
-            ClientsView(dataService: dataService)
-        case .mandates:
-            MandatesView(dataService: dataService)
-        case .agenda:
-            AgendaView(dataService: dataService)
-        case .analytics:
-            AnalyticsView(dataService: dataService)
-        case .settings:
-            SettingsView(dataService: dataService)
+        if let detail = coordinator.detailItem {
+            switch detail {
+            case .mandate(let id):
+                if let mandate = dataService.mandates.first(where: { $0.id == id }) {
+                    MandateDetailView(mandate: mandate, dataService: dataService)
+                }
+            case .property(let id):
+                if let property = dataService.properties.first(where: { $0.id == id }) {
+                    PropertyDetailView(property: property)
+                }
+            case .client(let id):
+                if let client = dataService.clients.first(where: { $0.id == id }) {
+                    ClientDetailView(client: client)
+                }
+            }
+        } else {
+            switch coordinator.selectedDestination {
+            case .dashboard:
+                DashboardView(dataService: dataService)
+            case .properties:
+                PropertiesView(dataService: dataService)
+            case .clients:
+                ClientsView(dataService: dataService)
+            case .mandates:
+                MandatesView(dataService: dataService)
+            case .agenda:
+                AgendaView(dataService: dataService)
+            case .analytics:
+                AnalyticsView(dataService: dataService)
+            case .settings:
+                SettingsView(dataService: dataService)
+            }
         }
     }
 }

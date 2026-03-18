@@ -32,6 +32,7 @@ struct MandateDocument: Identifiable, Codable {
     var required: Bool
     var provided: Bool
     var fileName: String?
+    var filePath: String?
 }
 
 struct Mandate: Identifiable, Codable {
