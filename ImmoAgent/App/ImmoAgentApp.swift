@@ -13,6 +13,7 @@ struct ImmoAgentApp: App {
                 .frame(minWidth: 1200, minHeight: 800)
         }
         .defaultSize(width: 1400, height: 900)
+        .windowToolbarStyle(.unified)
     }
 }
 

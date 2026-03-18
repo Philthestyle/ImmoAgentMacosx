@@ -7,6 +7,17 @@ final class PropertiesViewModel: ObservableObject {
     @Published var selectedFilter: String = "Tous"
     @Published var searchText: String = ""
     @Published var selectedProperty: Property?
+    @Published var viewMode: ViewMode = .cards
+
+    enum ViewMode: String, CaseIterable {
+        case cards, list
+        var icon: String {
+            switch self {
+            case .cards: "square.grid.2x2"
+            case .list: "list.bullet"
+            }
+        }
+    }
     private var cancellables = Set<AnyCancellable>()
 
     let filters = ["Tous", "Disponible", "Sous offre", "Vendu", "Lou\u{00E9}"]
